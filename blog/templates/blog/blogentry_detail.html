@@ -1,0 +1,6 @@
+<i>/blog/templates/blog/blogentry_detail.html</i>
+<h1>{{ object.title }}</h1>
+<p>{{ object.text }}</p>
+<p>Author: {{ object.created_by }}</p>
+<p>Published: {{ object.created_on|date }}</p>
+<p>Date: {{ now|date }}</p>

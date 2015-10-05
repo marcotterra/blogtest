@@ -1,0 +1,15 @@
+<i>/blog/templates/blog/blogentry_archive_month.html</i>
+<ul>
+    {% for blogentry in object_list %}
+        <li>{{ blogentry.created_on|date:"F j, Y" }}: {{ blogentry.title }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+    {% if previous_month %}
+        Previous Month: {{ previous_month|date:"F Y" }}
+    {% endif %}
+    {% if next_month %}
+        Next Month: {{ next_month|date:"F Y" }}
+    {% endif %}
+</p>

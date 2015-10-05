@@ -1,0 +1,15 @@
+<i>/blog/templates/blog/blogentry_archive_year.html</i>
+<ul>
+    {% for date in date_list %}
+        <li>{{ date|date }}</li>
+    {% endfor %}
+</ul>
+
+<div>
+    <h1>All Articles for {{ year|date:"Y" }}</h1>
+    {% for blogentry in object_list %}
+        <p>
+            {{ blogentry.title }} - {{ blogentry.created_on|date:"F j, Y" }}
+        </p>
+    {% endfor %}
+</div>

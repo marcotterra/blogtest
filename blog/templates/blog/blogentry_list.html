@@ -1,0 +1,9 @@
+<i>/blog/templates/blog/blogentry_list.html</i>
+<h1>Articles</h1>
+<ul>
+{% for blogentry in object_list %}
+    <li><a href="{{ blogentry.get_absolute_url }}">{{ blogentry.created_on|date }} - {{ blogentry.title }}</a></li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
