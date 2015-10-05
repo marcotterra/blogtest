@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Um 338{% endblock %}</title>
-
-
-    <link rel="shortcut icon" href="{% static "images/ico.png" %}" />
+    <title>Material Design Lite</title>
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
@@ -19,62 +16,24 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static "css/material.min.css" %}">
-    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    <link rel="stylesheet" href="{% static "css/blog.min.css" %}">
     <link rel="stylesheet" href="{% static "css/pace.css" %}">
-    <style>
-        .layout-transparent .mdl-layout__header,
-        .layout-transparent .mdl-layout__drawer-button {
-            /* This background is dark, so we set text to white. Use 87% black instead if
-     your background is light. */
-            
-            color: white;
+    <script>
+        paceOptions = {
+            // Configuration goes here. Example:
+            elements: false,
+            restartOnPushState: false,
+            restartOnRequestAfter: false
         }
-    </style>
-
+    </script>
 </head>
 
 <body>
+    <div class="blog blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
 
 
-    <div class="blog mdl-layout mdl-js-layout has-drawer is-upgraded">
 
 
-        <div class="layout-transparent mdl-layout mdl-js-layout">
-            <header class="mdl-layout__header mdl-layout__header--scroll mdl-layout__header--transparent">
-                <div class="mdl-layout__header-row">
-      <!--
-                    <span class="mdl-layout-title"><h1>Title</h1></span>
-      <!-- Add spacer, to align navigation to the right -->
-                    <div class="mdl-layout-spacer"></div>
-                    <!-- Navigation -->
-                    <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Home</a>
-                        <a class="mdl-navigation__link" href="">Contato</a>
-                        <a class="mdl-navigation__link" href="">Sobre</a>
-                        <a class="mdl-navigation__link" href="">Arquivo</a>
-
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-                            <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
-                                <i class="material-icons">search</i>
-                            </label>
-                            <div class="mdl-textfield__expandable-holder">
-                              <form action="search" method="get" autocomplete="off">
-                                <input class="mdl-textfield__input" type="text" name="q" id="waterfall-exp" auto />
-                              </form>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </header>
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Title</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Home</a>
-                    <a class="mdl-navigation__link" href="">Contato</a>
-                    <a class="mdl-navigation__link" href="">Sobre</a>
-                    <a class="mdl-navigation__link" href="">Arquivo</a>
-                </nav>
-            </div>
 
 
         <main class="mdl-layout__content">
@@ -86,13 +45,13 @@
             <div class="blog__posts mdl-grid">
                 <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
                     <div class="mdl-card__media mdl-color-text--grey-50">
-                        <h3>{{ object.title }}</h3>
+                        <h3>On the road again</h3>
                     </div>
                     <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
                         <div class="minilogo"></div>
                         <div>
-                            <strong>{{ object.created_by }}</strong>
-                            <span>{{ object.created_on|date }} - {{ now|date }}</span>
+                            <strong>The Newist</strong>
+                            <span>2 days ago</span>
                         </div>
                         <div class="section-spacer"></div>
                         <div class="meta__favorites">
@@ -110,7 +69,11 @@
                     </div>
                     <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
                         <p>
-                            {{ object.text }}
+<!-- BLOCK CONTENT -->
+{% block content %}
+
+{% endblock %}
+<!-- /BLOCK CONTENT -->
                         </p>
                     </div>
 
@@ -154,28 +117,10 @@
             </footer>
         </main>
         <div class="mdl-layout__obfuscator"></div>
-
-
-        </div>
     </div>
 
     <script src="{% static "js/material.min.js" %}"></script>
     <script src="{% static "js/pace.min.js" %}"></script>
 </body>
-<script>
-    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-        var link = el.querySelector('a');
-        if (!link) {
-            return;
-        }
-        var target = link.getAttribute('href');
-        if (!target) {
-            return;
-        }
-        el.addEventListener('click', function() {
-            location.href = target;
-        });
-    });
-</script>
 
 </html>
