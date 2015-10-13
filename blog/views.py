@@ -31,6 +31,8 @@ class BlogListView(ListView):
 '''
 
 class BlogEntryList(ListView):
+    template_name = "blog_entry_list.html"
+
     model = BlogEntry
     def get_context_data(self, **kwargs):
         return super(BlogEntryList, self).get_context_data(**kwargs)
@@ -52,6 +54,8 @@ class BlogEntryList(ListView):
 
 
 class BlogEntryDetail(DetailView):
+    template_name = "blog/blog_entry_detail.html"
+
     model = BlogEntry
     def get_context_data(self, **kwargs):
         context = super(BlogEntryDetail, self).get_context_data(**kwargs)
@@ -60,6 +64,9 @@ class BlogEntryDetail(DetailView):
 
 
 class AuthorView(ListView):
+    template_name = "blog/blog_author_view.html"
+
+
     def get_queryset(self):
         author = get_object_or_404(User, username=self.kwargs['username'])
         self.kwargs['author'] = author
@@ -76,12 +83,16 @@ class AuthorView(ListView):
         return context
 
 class BlogYearArchive(YearArchiveView):
+    template_name = "blog/blog_archive_year.html"
+
     queryset = BlogEntry.objects.all()
     date_field = "created_on"
     make_object_list = True
     allow_future = True
 
 class BlogMonthArchive(MonthArchiveView):
+    template_name = "blog/blog_archive_month.html"
+
     queryset = BlogEntry.objects.all()
     date_field = "created_on"
     allow_future = True
