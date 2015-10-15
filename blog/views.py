@@ -11,9 +11,9 @@ from blog.models import Blog, BlogEntry, BlogManager
 
 
 class BlogEntryList(ListView):
-    template_name = "blog_entry_list.html"
+    template_name = "blog/blog_entry_list.html"
     model = BlogEntry
-    
+
     def get_context_data(self, **kwargs):
         return super(BlogEntryList, self).get_context_data(**kwargs)
     
@@ -36,9 +36,10 @@ class BlogEntryDetail(DetailView):
         context['now'] = timezone.now()
         return context
 
-
+'''
 class AuthorView(ListView):
-    template_name = "blog/blog_author_view.html"
+    template_name = "blog/teste.html"
+    #model = BlogEntry
 
     def get_queryset(self):
         author = get_object_or_404(User, username=self.kwargs['username'])
@@ -54,6 +55,16 @@ class AuthorView(ListView):
         context = super(AuthorView, self).get_context_data(**kwargs)
         context['author'] = self.kwargs['author']
         return context
+'''
+
+class AuthorView(ListView):
+	template_name = "blog/blog_entry_author_list.html"
+	model = BlogEntry
+	
+	def get_queryset(self):
+		self.username = get_object_or_404(User, username=self.kwargs['username'])
+		return BlogEntry.objects.filter(created_by=self.username)
+
 
 class BlogYearArchive(YearArchiveView):
     template_name = "blog/blog_archive_year.html"
