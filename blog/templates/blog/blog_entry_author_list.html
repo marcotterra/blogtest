@@ -1,0 +1,26 @@
+{% extends "blog/page.html" %}
+
+{% block title %}{{ blogentry.title }}{% endblock %}
+
+{% block content %}
+                {% for blogentry in object_list %}
+<!-- /blog/templates/blog/blogentry_list.html -->
+                    <div class="mdl-card amazing mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__title mdl-color-text--grey-50">
+                            <h3 class="quote"><a href="{{ blogentry.get_absolute_url }}">{{ blogentry.title }}</a></h3>
+                        </div>
+                        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                            {{ blogentry.text|truncatechars:"255" }} <br />
+                        </div>
+                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                            <div class="minilogo"></div>
+                            <div>
+                                <strong>{{ blogentry.created_by }}</strong>
+                                <span>{{ blogentry.created_on|date }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    No articles yet.
+                {% endfor %}
+{% endblock %}
