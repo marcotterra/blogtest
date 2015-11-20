@@ -1,0 +1,3 @@
+blog/__pycache__/*.py
+blog/migrations/*.py 
+release/__pycache__/*.py
